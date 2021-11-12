@@ -10,7 +10,6 @@ function listar($resultado){
 
     echo $lista;
 }
-
-
-
 ?>
+
+

@@ -42,18 +42,6 @@ switch ($_POST["acao"]) {
 
     case 'inserir':
 
-        // $erros = validarCampos();
-
-        // if (count($erros) > 0) {
-            
-        //     $_SESSION["erros"] = $erros;
-
-        //     header("location: ./cadastro/index.php");
-
-        //     exit;
-
-        // }
-
     #   INSERÇÃO DE DADOS NA BASE DE DADOS DO MYSQL:    
 
     #RECEBIMENTO DOS DADOS:    
@@ -61,7 +49,7 @@ switch ($_POST["acao"]) {
         $sobrenome = $_POST["sobrenome"];
         $email = $_POST["email"];
         $celular = $_POST["celular"];
-        // $cod_pessoa = $_POST["cod_pessoa"];
+        $cod_pessoa = $_POST["cod_pessoa"];
 
 
     //CRIAÇÃO DA INSTRUÇÃO SQL DE INSERÇÃO:
@@ -87,12 +75,12 @@ switch ($_POST["acao"]) {
 
         $cod_pessoa = $_POST["cod_pessoa"];
 
+        $sql = "DELETE FROM tbl_pessoa WHERE id = $cod_pessoa";
         
         $resultado = mysqli_query($conexao, $sql);
         
         $pessoa = mysqli_fetch_array($resultado);
         
-        $sql = "DELETE FROM tbl_pessoa WHERE id = $cod_pessoa";
 
         header("location: index.php");
 

@@ -1,12 +1,14 @@
 <?php
     include('../componentes/header.php');
-    require('../database/conexao.php');
-    require('../listagem/funcoes.php');
+    require_once('../database/conexao.php');
+    require_once('../listagem/funcoes.php');
+    require_once('./acoes-listagem.php');
+//  include('./acoes-listagem.php');
+
 
     $sql = "SELECT * FROM tbl_pessoa";       
     $resultado = mysqli_query($conexao, $sql);
 
-    echo $lista;
 ?>
 
 <div class="container">
@@ -35,11 +37,9 @@
                 <th>TESTE DE CELULAR</th>
             -->
             <?php
-                while($pessoa = mysqli_fetch_array($resultado)){
-                    ?>
+                while($pessoa = mysqli_fetch_array($resultado)){?>
                     <th>
                         <?php echo $pessoa["cod_pessoa"]?>
-                  
                     <th>
                         <?php echo $pessoa["nome"]?>
                     </th>
@@ -53,23 +53,30 @@
                         <?php echo $pessoa["celular"]?>
                     </th>
                     <th>
-                        <a href="editar.php?cod_pessoa=<?php echo $dados["cod_pessoas"]?>">EDITAR</a>
-                        <a href="acoes.php?cod_pessoa=<?php echo $dados["cod_pessoas"]?>.'&acoes=deletar">EXCLUIR</a>
+                        <button>
+                            <a href="editar.php?cod_pessoa=<?php echo $pessoa["cod_pessoa"]?>&acao=editar">EDITAR</a>
+                        </button>
+                       <button class="btn"> 
+                            <a href="acoes-listagem.php?cod_pessoa=<?php echo $pessoa["cod_pessoa"]?>&acao=deletar">EXCLUIR</a>
+                       </button>
                     </th>
-                </tr>
-                    <?php }?>
-
-         <!--          <button class="btn btn-warning">Editar</button>
-
-                    <form action="" method="post" style="display: inline;">
-                        <input type="hidden" name="id" value="">
-                        <button class="btn btn-danger">Excluir</button>
-                    </form>
--->
-    </tbody>
-
+                </tr> 
+                <?php } ?>
+                
+                <?php 
+                    var_dump($pessoa["cod_pessoa"]);  
+                ?>
+                <!--          <button class="btn btn-warning">Editar</button>
+                
+                <form action="" method="post" style="display: inline;">
+                    <input type="hidden" name="id" value="">
+                    <button class="btn btn-danger">Excluir</button>
+                </form>
+            -->
+        </tbody>
+        
     </table>
-
+    
 </div>
 
 <?php
