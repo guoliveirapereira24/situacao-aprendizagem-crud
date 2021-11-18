@@ -21,7 +21,9 @@
                 <h2>Edição</h2>
             </div>
             <div class="card-body">
-                <form method="post" action="./acoes-listagem.php">
+                <form method="post" action="./acoes.php">
+                    <input type="hidden" name="acao" value="editar">
+                    <input type="hidden" name="id" value="<?= $idPessoa?>">
                     <input class="form-control" type="text" placeholder="Digite o nome" name="nome" id="nome" value="<?php echo $pessoa["nome"]?>">
                     <br />
                     <input class="form-control" type="text" placeholder="Digite o sobrenome" name="sobrenome" id="sobrenome" value="<?php echo $pessoa["sobrenome"]?>">

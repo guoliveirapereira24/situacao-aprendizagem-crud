@@ -38,6 +38,8 @@ if ($_POST["nome"] == "" || !isset($_POST["nome"])) {
 }
 
 
+
+
 switch ($_POST["acao"]) {
 
     case 'inserir':
@@ -49,7 +51,7 @@ switch ($_POST["acao"]) {
         $sobrenome = $_POST["sobrenome"];
         $email = $_POST["email"];
         $celular = $_POST["celular"];
-        $cod_pessoa = $_POST["cod_pessoa"];
+
 
 
     //CRIAÇÃO DA INSTRUÇÃO SQL DE INSERÇÃO:
@@ -90,10 +92,8 @@ switch ($_POST["acao"]) {
 
     case "editar":
 
-        $cod_pessoa = $_POST["cod_pessoa"];
+        $cod_pessoa = $_GET["cod_pessoa"];
 
-        /**     PROCESSO DE VALIDAÇÃO    */
-        $erros = validarCampos();
 
         if (count($erros) > 0) {
 

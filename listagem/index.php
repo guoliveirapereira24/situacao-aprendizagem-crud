@@ -1,9 +1,9 @@
 <?php
     include('../componentes/header.php');
-    require_once('../database/conexao.php');
-    require_once('../listagem/funcoes.php');
-    require_once('./acoes-listagem.php');
-//  include('./acoes-listagem.php');
+    include('../database/conexao.php');
+    include('../cadastro/funcoes.php');
+    include('../cadastro/acoes.php');
+
 
 
     $sql = "SELECT * FROM tbl_pessoa";       
@@ -54,10 +54,10 @@
                     </th>
                     <th>
                         <button>
-                            <a href="editar.php?cod_pessoa=<?php echo $pessoa["cod_pessoa"]?>&acao=editar">EDITAR</a>
+                            <a href="../cadastro/editar.php<?php echo $pessoa["cod_pessoa"]?>&acao=editar">EDITAR</a>
                         </button>
                        <button class="btn"> 
-                            <a href="acoes-listagem.php?cod_pessoa=<?php echo $pessoa["cod_pessoa"]?>&acao=deletar">EXCLUIR</a>
+                            <a href="acoes.php?cod_pessoa=<?php echo $pessoa["cod_pessoa"]?>&acao=deletar">EXCLUIR</a>
                        </button>
                     </th>
                 </tr> 
